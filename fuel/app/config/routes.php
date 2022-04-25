@@ -39,4 +39,9 @@ return array(
 	 */
 
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
+
+
+  // 議事録一覧ページ
+	'minutes' => 'minute/index',
+
 );
