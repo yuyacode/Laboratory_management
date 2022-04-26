@@ -7,6 +7,6 @@
   <title>laboratory management</title>
 </head>
 <body>
-  <h1>TOPページ</h1>
+  <p>TOPページ</p>
 </body>
 </html>
