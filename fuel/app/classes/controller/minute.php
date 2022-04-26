@@ -1,34 +1,9 @@
 <?php
-/**
- * Fuel is a fast, lightweight, community driven PHP 5.4+ framework.
- *
- * @package    Fuel
- * @version    1.8.2
- * @author     Fuel Development Team
- * @license    MIT License
- * @copyright  2010 - 2019 Fuel Development Team
- * @link       https://fuelphp.com
- */
-
-/**
- * The Welcome Controller.
- *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
- *
- * @package  app
- * @extends  Controller
- */
 
 class Controller_Minute extends Controller
 {
-	/**
-	 * The basic welcome message
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
 
+	// 議事録一覧ページへのアクセス
 	public function action_index()
 	{
 		echo '議事録一覧ページ';
@@ -37,12 +12,8 @@ class Controller_Minute extends Controller
 	// DBにデータを挿入する際のサンプルコード
 	public function action_insert()
 	{
-		DB::insert('minutes')->set(array(
-			'user_id' => 1,
-			'title' => '議事録７',
-			'summary' => '議事録７の概要です。',
-			'content' => '議事録７の内容・コンテンツです。',
-		))->execute();
+		Model_Minute::sample_insert();
+		return Response::forge(View::forge('minutes/show'));
 	}
 
 	// DBからデータを取得する際のサンプルコード
