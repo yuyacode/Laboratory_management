@@ -18,7 +18,7 @@ return array(
 	 *
 	 */
 
-	'_root_' => 'welcome/index',
+	// '_root_' => 'welcome/index',
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -40,6 +40,9 @@ return array(
 
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 
+
+	// TOPページ
+	'_root_' => 'index/index',
 
   // 議事録一覧ページ
 	'minutes' => 'minute/index',
