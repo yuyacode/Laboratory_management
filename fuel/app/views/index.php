@@ -1,3 +1,4 @@
+<!-- TOPページ -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,5 +9,6 @@
 </head>
 <body>
   <p>TOPページ</p>
+  <p><a href="/minutes">議事録 一覧ページ</a></p>
 </body>
 </html>

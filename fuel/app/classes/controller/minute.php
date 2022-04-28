@@ -3,25 +3,19 @@
 class Controller_Minute extends Controller
 {
 
-	// 議事録一覧ページへのアクセス
+	// データ取得
 	public function action_index()
 	{
-		echo '議事録一覧ページ';
+		$data = array();
+		$data['rows'] = Model_Minute::sample_select();
+		return View::forge('minutes/index', $data);
 	}
 
-	// DBにデータを挿入する際のサンプルコード
+	// データ挿入
 	public function action_insert()
 	{
 		Model_Minute::sample_insert();
 		return Response::forge(View::forge('minutes/show'));
-	}
-
-	// DBからデータを取得する際のサンプルコード
-	public function action_select()
-	{
-		$result = DB::select('*')->from('minutes')->where('id', '>=', '6')->order_by('id', 'desc')->execute()->as_array();
-		echo '<pre>';
-		print_r($result);
 	}
 
 	// DBのデータを更新する際のサンプルコード
