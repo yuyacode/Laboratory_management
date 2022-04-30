@@ -3,22 +3,57 @@
 class Model_Minute extends Model
 {
 
-  public static function sample_insert()
-	{
-    // データ挿入
-		DB::insert('minutes')->set(array(
-      // 下記はサンプルデータ
-			'user_id' => 1,
-			'title' => '議事録１１タイトル',
-			'summary' => '議事録１１概要',
-			'content' => '議事録１１内容',
-		))->execute();
-	}
-
-  // データ取得
-  public static function sample_select()
+  // TOPページ
+  public static function select_five()
   {
-    $result = DB::select('*')->from('minutes')->execute()->as_array();
+    $result = DB::select('*')->from('minutes')->order_by('created_at', 'desc')->limit(5)->execute()->as_array();
     return $result;
   }
+
+  // 一覧
+  public static function select_all()
+  {
+    $result = DB::select('*')->from('minutes')->order_by('created_at', 'desc')->execute()->as_array();
+    return $result;
+  }
+
+  // 詳細
+  public static function select($param)
+  {
+    $result = DB::select('*')->from('minutes')->where('id', '=', $param)->execute()->as_array();
+    return $result;
+  }
+
+  // 作成
+  public static function insert()
+  {
+    DB::insert('minutes')->set(array(
+      'user_id' => Input::post('user_id'),
+      'title' => Input::post('title'),
+      'summary' => Input::post('summary'),
+      'content' => Input::post('content'),
+    ))->execute();
+    return;
+  }
+
+  // 編集
+  public static function update($param)
+  {
+    DB::update('minutes')->set(array(
+      'title' => Input::post('title'),
+      'summary' => Input::post('summary'),
+      'content' => Input::post('content'),
+    ))
+    ->where('id', '=', $param)
+    ->execute();
+    return;
+  }
+
+  // 削除
+  public static function delete($param)
+  {
+    DB::delete('minutes')->where('id', '=', $param)->execute();
+    return;
+  }
+
 }

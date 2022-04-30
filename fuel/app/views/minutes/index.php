@@ -1,3 +1,4 @@
+<!-- 議事録 一覧ページ -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,12 +8,14 @@
   <title>laboratory management</title>
 </head>
 <body>
-  <?php foreach ($rows as $row) : ?>
-    <p><?php echo $row['title']; ?></p>
-    <p><?php echo $row['summary']; ?></p>
-    <p><?php echo $row['content']; ?></p>
-    <p><?php echo $row['created_at']; ?></p>
-    <p><?php echo $row['updated_at']; ?></p>
+  <p>議事録  一覧ページ</p>
+  <p><a href="minute/create">新規作成</a></p>
+  <?php foreach ($minutes_list as $minutes_item) : ?>
+    <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>"><?php echo $minutes_item['title']; ?></a></p>
+    <p><?php echo $minutes_item['summary']; ?></p>
+    <p><?php echo $minutes_item['content']; ?></p>
+    <p><?php echo $minutes_item['created_at']; ?></p>
+    <p><?php echo $minutes_item['updated_at']; ?></p>
     <br>
   <?php endforeach; ?>
 </body>
