@@ -47,7 +47,7 @@ class Controller_Minute extends Controller
     Response::redirect("minute/show/{$param}");
   }
 
-// 削除
+  // 削除
   public function action_delete($param)
   {
     Model_Minute::delete($param);

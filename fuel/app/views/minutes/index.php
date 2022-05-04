@@ -9,7 +9,7 @@
 </head>
 <body>
   <p>議事録  一覧ページ</p>
-  <p><a href="minute/create">新規作成</a></p>
+  <p><a href="/minute/create">新規作成</a></p>
   <?php foreach ($minutes_list as $minutes_item) : ?>
     <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>"><?php echo $minutes_item['title']; ?></a></p>
     <p><?php echo $minutes_item['summary']; ?></p>
