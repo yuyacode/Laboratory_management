@@ -9,7 +9,6 @@
 </head>
 <body>
   <p>TOPページ</p>
-
   <?php foreach ($minutes_list as $minutes_item) : ?>
     <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>"><?php echo $minutes_item['title']; ?></a></p>
     <p><?php echo $minutes_item['summary']; ?></p>
@@ -17,14 +16,16 @@
     <p><?php echo $minutes_item['updated_at']; ?></p>
   <?php endforeach; ?>
   <p><a href="/minute">議事録 一覧ページ</a></p>
-
   <p><a href="/task/index_yet">課題 一覧ページ</a></p>
-  <p>期日まで1週間以内の課題</p>
-  <?php foreach ($tasks as $task) : ?>
-    <p><?php echo $task['title']; ?></p>
-    <p>提出期限：<?php echo $task['deadline']; ?></p>
-    <p><a href="/task/show/<?php echo $task['id'] ?>">詳細</a></p>
-  <?php endforeach; ?>
-
+  <p>１週間以内の課題</p>
+  <?php if (empty($tasks)) : ?>
+    <p>未完了な課題はありません。</p>
+  <?php else: ?>
+    <?php foreach ($tasks as $task) : ?>
+      <p><?php echo $task['title']; ?></p>
+      <p>提出期限：<?php echo $task['deadline']; ?></p>
+      <p><a href="/task/show/<?php echo $task['id'] ?>">詳細</a></p>
+    <?php endforeach; ?>
+  <?php endif; ?>
 </body>
 </html>
