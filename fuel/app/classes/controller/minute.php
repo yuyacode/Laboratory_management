@@ -28,8 +28,28 @@ class Controller_Minute extends Controller
   // 作成
   public function action_insert()
   {
-    Model_Minute::insert();
-    Response::redirect('minute');
+    $val = Validation::forge();
+
+    $val->add('title', 'タイトル')
+    ->add_rule('required')
+    ->add_rule('max_length', 50);
+
+    $val->add('summary', '概要')
+    ->add_rule('required')
+    ->add_rule('max_length', 255);
+
+    $val->add('content', '内容')
+    ->add_rule('required');
+
+    if ($val->run()) {
+      Model_Minute::insert();
+      Response::redirect('minute');
+    } else {
+      foreach ($val->error() as $value) {
+        echo $value->get_message();
+        echo '<br>';
+      }
+    }
   }
 
   // 編集ページ 表示

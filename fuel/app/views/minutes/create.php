@@ -12,9 +12,9 @@
   <form action="/minute/insert" method="POST">
     <input type="hidden" name="user_id" value="1">
     <p>タイトル</p>
-    <input type="text" name="title">
+    <input type="text" name="title" placeholder="50字以内">
     <p>概要</p>
-    <textarea name="summary"></textarea>
+    <textarea name="summary" placeholder="255字以内"></textarea>
     <p>内容</p>
     <textarea name="content"></textarea>
     <p><input type="submit" value="作成"></p>

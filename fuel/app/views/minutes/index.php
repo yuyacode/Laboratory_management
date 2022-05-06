@@ -13,7 +13,6 @@
   <?php foreach ($minutes_list as $minutes_item) : ?>
     <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>"><?php echo $minutes_item['title']; ?></a></p>
     <p><?php echo $minutes_item['summary']; ?></p>
-    <p><?php echo $minutes_item['content']; ?></p>
     <p><?php echo $minutes_item['created_at']; ?></p>
     <p><?php echo $minutes_item['updated_at']; ?></p>
     <br>

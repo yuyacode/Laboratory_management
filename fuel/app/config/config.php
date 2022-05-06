@@ -148,13 +148,13 @@ return array(
 	 *  Fallback language when file isn't available for default language.
 	 */
 
-	// 'language_fallback' => 'en',
+	'language_fallback' => 'en',
 
 	/**
 	 *  PHP set_locale() setting. Use null to not set.
 	 */
 
-	// 'locale' => 'japanese',
+	'locale' => 'ja_JP.utf8',
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -162,7 +162,7 @@ return array(
 	 * -------------------------------------------------------------------------
 	 */
 
-	// 'encoding' => 'UTF-8',
+	'encoding' => 'UTF-8',
 
 	/**
 	 * -------------------------------------------------------------------------
