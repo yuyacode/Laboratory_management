@@ -20,6 +20,7 @@ class Model_Task extends Model
     return $result;
   }
 
+
   // 一覧（未完了）
   public static function select_yet()
   {
@@ -34,6 +35,7 @@ class Model_Task extends Model
     ->as_array();
     return $result;
   }
+
 
   // 一覧（完了）
   public static function select_already()
@@ -50,6 +52,7 @@ class Model_Task extends Model
     return $result;
   }
 
+
   // 詳細
   public static function select($param)
   {
@@ -60,6 +63,7 @@ class Model_Task extends Model
     ->as_array();
     return $result;
   }
+
 
   // 作成
   public static function insert()
@@ -75,6 +79,7 @@ class Model_Task extends Model
     return;
   }
 
+
   // 編集 (title, content)
   public static function update($param)
   {
@@ -88,6 +93,7 @@ class Model_Task extends Model
     return;
   }
 
+
   // 編集 (deadline)
   public static function update_deadline($param)
   {
@@ -100,6 +106,7 @@ class Model_Task extends Model
     return;
   }
 
+
   // 編集 (completion_date)
   public static function update_completion_date($param)
   {
@@ -111,6 +118,7 @@ class Model_Task extends Model
     ->execute();
     return;
   }
+
 
   // 削除
   public static function delete($param)

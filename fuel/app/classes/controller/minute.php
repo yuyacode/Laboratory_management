@@ -11,6 +11,7 @@ class Controller_Minute extends Controller
     return View::forge('minutes/index', $data);
   }
 
+
   // 詳細ページ 表示
   public function action_show($param = null)
   {
@@ -19,11 +20,13 @@ class Controller_Minute extends Controller
     return View::forge('minutes/show', $data);
   }
 
+
   // 作成ページ 表示
   public function action_create()
   {
     return View::forge('minutes/create');
   }
+
 
   // 作成
   public function action_insert()
@@ -52,6 +55,7 @@ class Controller_Minute extends Controller
     }
   }
 
+
   // 編集ページ 表示
   public function action_edit($param = null)
   {
@@ -59,6 +63,7 @@ class Controller_Minute extends Controller
     $data['minutes_list'] = Model_Minute::select($param);
     return View::forge('minutes/edit', $data);
   }
+
 
   // 編集
   public function action_update($param)
@@ -86,6 +91,7 @@ class Controller_Minute extends Controller
       }
     }
   }
+
 
   // 削除
   public function action_delete($param)

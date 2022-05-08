@@ -15,6 +15,7 @@ class Model_Minute extends Model
     return $result;
   }
 
+
   // 一覧
   public static function select_all()
   {
@@ -26,6 +27,7 @@ class Model_Minute extends Model
     return $result;
   }
 
+
   // 詳細
   public static function select($param)
   {
@@ -36,6 +38,7 @@ class Model_Minute extends Model
     ->as_array();
     return $result;
   }
+
 
   // 作成
   public static function insert()
@@ -51,6 +54,7 @@ class Model_Minute extends Model
     return;
   }
 
+
   // 編集
   public static function update($param)
   {
@@ -64,6 +68,7 @@ class Model_Minute extends Model
     ->execute();
     return;
   }
+
 
   // 削除
   public static function delete($param)

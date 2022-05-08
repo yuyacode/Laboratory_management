@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  'required'      => ':labelは、必須入力です。',
+  'required'      => ':labelを入力してください。',
   'min_length'    => ':labelは、:param:1文字以上で入力して下さい。',
   'max_length'    => ':labelは、:param:1文字以下で入力して下さい。',
   'exact_length'  => ':labelは、:param:1文字で入力して下さい。',
