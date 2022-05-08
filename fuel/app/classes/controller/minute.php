@@ -63,8 +63,28 @@ class Controller_Minute extends Controller
   // 編集
   public function action_update($param)
   {
-    Model_Minute::update($param);
-    Response::redirect("minute/show/{$param}");
+    $val = Validation::forge();
+
+    $val->add('title', 'タイトル')
+    ->add_rule('required')
+    ->add_rule('max_length', 50);
+
+    $val->add('summary', '概要')
+    ->add_rule('required')
+    ->add_rule('max_length', 255);
+
+    $val->add('content', '内容')
+    ->add_rule('required');
+
+    if ($val->run()) {
+      Model_Minute::update($param);
+      Response::redirect("minute/show/{$param}");
+    } else {
+      foreach ($val->error() as $value) {
+        echo $value->get_message();
+        echo '<br>';
+      }
+    }
   }
 
   // 削除
