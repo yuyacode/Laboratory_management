@@ -1,4 +1,8 @@
 <!-- 議事録 一覧ページ -->
+<?php
+session_start();
+session_regenerate_id();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,6 +12,7 @@
   <title>laboratory management</title>
 </head>
 <body>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
   <p>議事録  一覧ページ</p>
   <p><a href="/minute/create">新規作成</a></p>
   <?php foreach ($minutes_list as $minutes_item) : ?>

@@ -1,4 +1,8 @@
 <!-- 課題 詳細ページ -->
+<?php
+session_start();
+session_regenerate_id();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,7 +21,7 @@
       <p>未完了</p>
     <?php endif; ?>
     <p><a href="/task/edit/<?php echo $task['id'] ?>">編集</a></p>
-    <p><a href="/task/delete/<?php echo $task['id'] ?>">削除</a></p>
+    <p><a href="/task/delete/<?php echo $task['id'] ?>/<?php echo $_SESSION['id']; ?>">削除</a></p>
     <p>作成日：<?php echo $task['created_at']; ?></p>
     <p>更新日：<?php echo $task['updated_at']; ?></p>
     <p><?php echo $task['content']; ?></p>
@@ -35,9 +39,9 @@
       </form>
     <?php endif; ?>
     <?php if (isset($task['completion_date'])) : ?>
-      <p><a href="/task/index_already">課題 一覧ページへ</a></p>
+      <p><a href="/task/index_already/<?php echo $_SESSION['id']; ?>">課題 一覧ページへ</a></p>
     <?php else: ?>
-      <p><a href="/task/index_yet">課題 一覧ページへ</a></p>
+      <p><a href="/task/index_yet/<?php echo $_SESSION['id']; ?>">課題 一覧ページへ</a></p>
     <?php endif; ?>
   <?php endforeach; ?>
 </body>

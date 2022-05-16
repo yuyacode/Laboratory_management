@@ -4,13 +4,14 @@ class Model_Task extends Model
 {
 
   // TOPページ
-  public static function select_top()
+  public static function select_top($id)
   {
     $now = date("Y-m-d H:i:s");
     $one_week_later = date('Y-m-d H:i:s', strtotime('1week'));
 
     $result = DB::select('*')
     ->from('tasks')
+    ->where('user_id', '=', $id)
     ->where('completion_date', '=', null)
     ->where('deadline', '>=', $now)
     ->where('deadline', '<=', $one_week_later)
@@ -22,12 +23,13 @@ class Model_Task extends Model
 
 
   // 一覧（未完了）
-  public static function select_yet()
+  public static function select_yet($id)
   {
     $now = date("Y-m-d H:i:s");
 
     $result = DB::select('*')
     ->from('tasks')
+    ->where('user_id', '=', $id)
     ->where('completion_date', '=', null)
     ->where('deadline', '>=', $now)
     ->order_by('deadline', 'asc')
@@ -38,12 +40,13 @@ class Model_Task extends Model
 
 
   // 一覧（完了）
-  public static function select_already()
+  public static function select_already($id)
   {
     $now = date("Y-m-d H:i:s");
 
     $result = DB::select('*')
     ->from('tasks')
+    ->where('user_id', '=', $id)
     ->where('completion_date', '!=', null)
     ->where('deadline', '>=', $now)
     ->order_by('deadline', 'asc')

@@ -1,4 +1,8 @@
 <!-- 議事録 作成ページ -->
+<?php
+session_start();
+session_regenerate_id();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,8 +13,8 @@
 </head>
 <body>
   <p>議事録 作成ページ</p>
-  <form action="/minute/insert" method="POST">
-    <input type="hidden" name="user_id" value="1">
+  <form action="/minute/insert/<?php echo $_SESSION['id']; ?>" method="POST">
+    <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
     <p>タイトル</p>
     <input type="text" name="title" placeholder="50字以内">
     <p>概要</p>
@@ -19,6 +23,6 @@
     <textarea name="content"></textarea>
     <p><input type="submit" value="作成"></p>
   </form>
-  <p><a href="/minute">議事録 一覧ページへ</a></p>
+  <p><a href="/minute/<?php echo $_SESSION['id']; ?>">議事録 一覧ページへ</a></p>
 </body>
 </html>

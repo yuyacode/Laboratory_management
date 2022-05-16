@@ -4,10 +4,10 @@ class Controller_Minute extends Controller
 {
 
   // 一覧ページ 表示
-  public function action_index()
+  public function action_index($id)
   {
     $data = array();
-    $data['minutes_list'] = Model_Minute::select_all();
+    $data['minutes_list'] = Model_Minute::select_all($id);
     return View::forge('minutes/index', $data);
   }
 
@@ -29,7 +29,7 @@ class Controller_Minute extends Controller
 
 
   // 作成
-  public function action_insert()
+  public function action_insert($id)
   {
     $val = Validation::forge();
 
@@ -46,7 +46,7 @@ class Controller_Minute extends Controller
 
     if ($val->run()) {
       Model_Minute::insert();
-      Response::redirect('minute');
+      Response::redirect("minute/index/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -94,10 +94,10 @@ class Controller_Minute extends Controller
 
 
   // 削除
-  public function action_delete($param)
+  public function action_delete($param1, $param2)
   {
-    Model_Minute::delete($param);
-    Response::redirect('minute');
+    Model_Minute::delete($param1);
+    Response::redirect("minute/index/$param2");
   }
 
 }

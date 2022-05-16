@@ -1,4 +1,8 @@
 <!-- 課題 一覧ページ -->
+<?php
+session_start();
+session_regenerate_id();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,13 +12,14 @@
   <title>laboratory management</title>
 </head>
 <body>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
   <p>課題 一覧ページ</p>
   <p><a href="/task/create">新規作成</a></p>
   <?php if ($status == '完了') : ?>
     <p>完了</p>
-    <p><a href="/task/index_yet">未完了</a></p>
+    <p><a href="/task/index_yet/<?php echo $_SESSION['id']; ?>">未完了</a></p>
   <?php else: ?>
-    <p><a href="/task/index_already">完了</a></p>
+    <p><a href="/task/index_already/<?php echo $_SESSION['id']; ?>">完了</a></p>
     <p>未完了</p>
   <?php endif; ?>
   <?php if (empty($tasks)) : ?>
