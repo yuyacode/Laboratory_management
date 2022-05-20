@@ -19,6 +19,6 @@
     <input type="text" name="password" placeholder="#">
     <p><input type="submit" value="ログイン"></p>
   </form>
-  <p><a href="#">新規登録</a></p>
+  <p><a href="/user/create_page">新規登録</a></p>
 </body>
 </html>

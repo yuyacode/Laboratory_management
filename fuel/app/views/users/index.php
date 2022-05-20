@@ -12,7 +12,6 @@ session_regenerate_id();
   <title>laboratory management</title>
 </head>
 <body>
-  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
   <p>マイページ</p>
   <?php foreach ($user_info_list as $user_info_item) : ?>
     <?php $_SESSION['id'] = $user_info_item['id']; ?>
@@ -35,5 +34,6 @@ session_regenerate_id();
     <?php endif; ?>
     <p>登録日時：<?php echo $user_info_item['created_at']; ?></p>
   <?php endforeach; ?>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
 </body>
 </html>

@@ -3,6 +3,33 @@
 class Model_User extends Model
 {
 
+  // 新規登録
+  public static function insert()
+  {
+    $username = Input::post('username');
+    $password = Input::post('password');
+    $email = Input::post('email');
+
+    DB::insert('users')
+    ->set(array(
+      'username' => $username,
+      'password' => $password,
+      'email' => $email,
+    ))
+    ->execute();
+
+    $result = DB::select('*')
+    ->from('users')
+    ->where('username', '=', $username)
+    ->where('password', '=', $password)
+    ->where('email', '=', $email)
+    ->execute()
+    ->as_array();
+
+    return $result;
+  }
+
+
   //
   public static function select()
   {
@@ -49,48 +76,5 @@ class Model_User extends Model
     ->execute();
     return;
   }
-
-
-
-
-
-
-
-
-
-  // 新規登録
-  // public static function insert()
-  // {
-  //   $username = Input::post('username');
-  //   $password = Input::post('password');
-  //   $email = Input::post('email');
-
-  //   DB::insert('users')
-  //   ->set(array(
-  //     'username' => $username,
-  //     'password' => $password,
-  //     'email' => $email,
-  //   ))
-  //   ->execute();
-
-  //   $user_id = DB::select('id')
-  //   ->from('users')
-  //   ->where('username', '=', $username)
-  //   ->execute()
-  //   ->as_array();
-
-  //   $data = array();
-  //   $data['user_id'] = $user_id[0]['id'];
-  //   $data['username'] = $username;
-
-  //   return $data;
-  //   // return $result;
-  //   // return $username;
-  // }
-
-
-
-
-
 
 }
