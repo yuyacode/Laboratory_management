@@ -1,5 +1,7 @@
 <?php
 
+use Fuel\Core\Validation;
+
 class Controller_Task extends Controller
 {
 

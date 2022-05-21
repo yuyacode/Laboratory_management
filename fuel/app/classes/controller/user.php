@@ -1,5 +1,7 @@
 <?php
 
+use Fuel\Core\Validation;
+
 class Controller_User extends Controller
 {
 
@@ -21,9 +23,31 @@ class Controller_User extends Controller
   // 新規登録
   public function action_create_user()
   {
-    $data = array();
-    $data['user_info_list'] = Model_User::insert();
-    return View::forge('users/index', $data);
+    $val = Validation::forge();
+
+    $val->add('username', 'ユーザー名')
+    ->add_rule('required')
+    ->add_rule('max_length', 15);
+
+    $val->add('password', 'パスワード')
+    ->add_rule('required')
+    ->add_rule('min_length', 8)
+    ->add_rule('max_length', 16);
+
+    $val->add('email', 'メールアドレス')
+    ->add_rule('required')
+    ->add_rule('valid_email');
+
+    if ($val->run()) {
+      $data = array();
+      $data['user_info_list'] = Model_User::insert();
+      return View::forge('users/index', $data);
+    } else {
+      foreach ($val->error() as $value) {
+        echo $value->get_message();
+        echo '<br>';
+      }
+    }
   }
 
 
@@ -37,13 +61,31 @@ class Controller_User extends Controller
   // ログイン
   public function action_login()
   {
-    $data = array();
-    $data['user_info_list'] = Model_User::select();
-    if (empty($data['user_info_list'])) {
-      $data['error'] = 'ログインに失敗しました。';
-      return View::forge('users/login', $data);
+    $val = Validation::forge();
+
+    $val->add('username', 'ユーザー名')
+    ->add_rule('required')
+    ->add_rule('max_length', 15);
+
+    $val->add('password', 'パスワード')
+    ->add_rule('required')
+    ->add_rule('min_length', 8)
+    ->add_rule('max_length', 16);
+
+    if ($val->run()) {
+      $data = array();
+      $data['user_info_list'] = Model_User::select();
+      if (empty($data['user_info_list'])) {
+        $data['error'] = 'ログインに失敗しました。';
+        return View::forge('users/login', $data);
+      } else {
+        return View::forge('users/index', $data);
+      }
     } else {
-      return View::forge('users/index', $data);
+      foreach ($val->error() as $value) {
+        echo $value->get_message();
+        echo '<br>';
+      }
     }
   }
 
@@ -59,8 +101,45 @@ class Controller_User extends Controller
   // 編集
   public function action_edit($id)
   {
-    Model_User::update($id);
-    Response::redirect("/user/index/{$id}");
+    $val = Validation::forge();
+
+    $val->add('username', 'ユーザー名')
+    ->add_rule('required')
+    ->add_rule('max_length', 15);
+
+    $val->add('password', 'パスワード')
+    ->add_rule('required')
+    ->add_rule('min_length', 8)
+    ->add_rule('max_length', 16);
+
+    $val->add('email', 'メールアドレス')
+    ->add_rule('required')
+    ->add_rule('valid_email');
+
+    $val->add('university', '大学')
+    ->add_rule('max_length', 20);
+
+    $val->add('faculty', '学部')
+    ->add_rule('max_length', 20);
+
+    $val->add('department', '学科')
+    ->add_rule('max_length', 20);
+
+    $val->add('laboratory', '研究室')
+    ->add_rule('max_length', 20);
+
+    $val->add('objective', '目標')
+    ->add_rule('max_length', 255);
+
+    if ($val->run()) {
+      Model_User::update($id);
+      Response::redirect("/user/index/{$id}");
+    } else {
+      foreach ($val->error() as $value) {
+        echo $value->get_message();
+        echo '<br>';
+      }
+    }
   }
 
 
