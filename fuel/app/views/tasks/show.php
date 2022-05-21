@@ -12,6 +12,8 @@ session_regenerate_id();
   <title>laboratory management</title>
 </head>
 <body>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
+  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>課題 詳細ページ</p>
   <?php foreach ($tasks as $task) : ?>
     <p><?php echo $task['title']; ?></p>

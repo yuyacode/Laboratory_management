@@ -1,4 +1,8 @@
 <!-- 課題 編集ページ -->
+<?php
+session_start();
+session_regenerate_id();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,6 +12,8 @@
   <title>laboratory management</title>
 </head>
 <body>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
+  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>課題 編集ページ</p>
   <?php foreach ($tasks as $task) : ?>
     <form action="/task/update/<?php echo $task['id'] ?>" method="POST">

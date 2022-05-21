@@ -13,6 +13,7 @@ session_regenerate_id();
 </head>
 <body>
   <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
+  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>議事録  一覧ページ</p>
   <p><a href="/minute/create">新規作成</a></p>
   <?php foreach ($minutes_list as $minutes_item) : ?>

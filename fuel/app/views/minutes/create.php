@@ -12,6 +12,8 @@ session_regenerate_id();
   <title>laboratory management</title>
 </head>
 <body>
+  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
+  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>議事録 作成ページ</p>
   <form action="/minute/insert/<?php echo $_SESSION['id']; ?>" method="POST">
     <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
@@ -23,6 +25,6 @@ session_regenerate_id();
     <textarea name="content"></textarea>
     <p><input type="submit" value="作成"></p>
   </form>
-  <p><a href="/minute/<?php echo $_SESSION['id']; ?>">議事録 一覧ページへ</a></p>
+  <p><a href="/minute/index/<?php echo $_SESSION['id']; ?>">議事録 一覧ページへ</a></p>
 </body>
 </html>
