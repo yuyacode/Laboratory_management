@@ -34,7 +34,7 @@ class Controller_User extends Controller
   }
 
 
-  // ログイン処理
+  // ログイン
   public function action_login()
   {
     $data = array();
@@ -56,11 +56,19 @@ class Controller_User extends Controller
   }
 
 
-  // 編集処理
+  // 編集
   public function action_edit($id)
   {
     Model_User::update($id);
     Response::redirect("/user/index/{$id}");
+  }
+
+
+  // 削除（退会処理）
+  public function action_delete($id)
+  {
+    Model_User::delete($id);
+    return View::forge('users/create');
   }
 
 }

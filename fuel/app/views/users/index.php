@@ -16,6 +16,7 @@ session_regenerate_id();
   <?php foreach ($user_info_list as $user_info_item) : ?>
     <?php $_SESSION['id'] = $user_info_item['id']; ?>
     <p><a href="/user/edit_page/<?php echo $_SESSION['id']; ?>">編集</a></p>
+    <p><a href="/user/delete/<?php echo $_SESSION['id']; ?>">削除</a></p>
     <p><?php echo $user_info_item['username']; ?></p>
     <?php if (isset($user_info_item['university']) && $user_info_item['university'] !== "") : ?>
       <p><?php echo $user_info_item['university']; ?>大学</p>

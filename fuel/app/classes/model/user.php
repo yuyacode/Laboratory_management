@@ -77,4 +77,14 @@ class Model_User extends Model
     return;
   }
 
+
+  // 削除（退会処理）
+  public static function delete($id)
+  {
+    DB::delete('users')
+    ->where('id', '=', $id)
+    ->execute();
+    return;
+  }
+
 }
