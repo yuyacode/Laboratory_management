@@ -8,7 +8,7 @@ class Controller_User extends Controller
   // マイページ 表示
   public function action_index($id)
   {
-    $data['user_info_list'] = Model_User::select1($id);
+    $data['user_info_list'] = Model_User::select($id);
     return View::forge('users/index', $data);
   }
 
@@ -74,7 +74,7 @@ class Controller_User extends Controller
 
     if ($val->run()) {
       $data = array();
-      $data['user_info_list'] = Model_User::select();
+      $data['user_info_list'] = Model_User::login();
       if (empty($data['user_info_list'])) {
         $data['error'] = 'ログインに失敗しました。';
         return View::forge('users/login', $data);
@@ -93,7 +93,7 @@ class Controller_User extends Controller
   // 編集ページ 表示
   public function action_edit_page($id)
   {
-    $data['user_info_list'] = Model_User::select1($id);
+    $data['user_info_list'] = Model_User::select($id);
     return View::forge('users/edit', $data);
   }
 

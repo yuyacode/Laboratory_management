@@ -15,10 +15,10 @@ class Controller_Minute extends Controller
 
 
   // 詳細ページ 表示
-  public function action_show($param = null)
+  public function action_show($id)
   {
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($param);
+    $data['minutes_list'] = Model_Minute::select($id);
     return View::forge('minutes/show', $data);
   }
 
@@ -59,16 +59,16 @@ class Controller_Minute extends Controller
 
 
   // 編集ページ 表示
-  public function action_edit($param = null)
+  public function action_edit($id)
   {
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($param);
+    $data['minutes_list'] = Model_Minute::select($id);
     return View::forge('minutes/edit', $data);
   }
 
 
   // 編集
-  public function action_update($param)
+  public function action_update($id)
   {
     $val = Validation::forge();
 
@@ -84,8 +84,8 @@ class Controller_Minute extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-      Model_Minute::update($param);
-      Response::redirect("minute/show/{$param}");
+      Model_Minute::update($id);
+      Response::redirect("minute/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -96,10 +96,10 @@ class Controller_Minute extends Controller
 
 
   // 削除
-  public function action_delete($param1, $param2)
+  public function action_delete($id, $user_id)
   {
-    Model_Minute::delete($param1);
-    Response::redirect("minute/index/$param2");
+    Model_Minute::delete($id);
+    Response::redirect("minute/index/$user_id");
   }
 
 }

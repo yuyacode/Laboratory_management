@@ -31,11 +31,11 @@ class Model_Minute extends Model
 
 
   // 詳細
-  public static function select($param)
+  public static function select($id)
   {
     $result = DB::select('*')
     ->from('minutes')
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute()
     ->as_array();
     return $result;
@@ -58,7 +58,7 @@ class Model_Minute extends Model
 
 
   // 編集
-  public static function update($param)
+  public static function update($id)
   {
     DB::update('minutes')
     ->set(array(
@@ -66,17 +66,17 @@ class Model_Minute extends Model
       'summary' => Input::post('summary'),
       'content' => Input::post('content'),
     ))
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }
 
 
   // 削除
-  public static function delete($param)
+  public static function delete($id)
   {
     DB::delete('minutes')
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }

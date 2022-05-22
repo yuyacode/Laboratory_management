@@ -26,10 +26,10 @@ class Controller_Task extends Controller
 
 
   // 詳細ページ 表示
-  public function action_show($param = null)
+  public function action_show($id)
   {
     $data = array();
-    $data['tasks'] = Model_Task::select($param);
+    $data['tasks'] = Model_Task::select($id);
     return View::forge('tasks/show', $data);
   }
 
@@ -69,16 +69,16 @@ class Controller_Task extends Controller
 
 
   // 編集ページ 表示 (title, content)
-  public function action_edit($param = null)
+  public function action_edit($id)
   {
     $data = array();
-    $data['tasks'] = Model_Task::select($param);
+    $data['tasks'] = Model_Task::select($id);
     return View::forge('tasks/edit', $data);
   }
 
 
   // 編集 (title, content)
-  public function action_update($param)
+  public function action_update($id)
   {
     $val = Validation::forge();
 
@@ -90,8 +90,8 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-      Model_Task::update($param);
-      Response::redirect("task/show/{$param}");
+      Model_Task::update($id);
+      Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -102,7 +102,7 @@ class Controller_Task extends Controller
 
 
   // 編集 (deadline)
-  public function action_update_deadline($param)
+  public function action_update_deadline($id)
   {
     $val = Validation::forge();
 
@@ -110,8 +110,8 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-      Model_Task::update_deadline($param);
-      Response::redirect("task/show/{$param}");
+      Model_Task::update_deadline($id);
+      Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -122,7 +122,7 @@ class Controller_Task extends Controller
 
 
   // 編集 (completion_date)
-  public function action_update_completion_date($param)
+  public function action_update_completion_date($id)
   {
     $val = Validation::forge();
 
@@ -130,8 +130,8 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-    Model_Task::update_completion_date($param);
-    Response::redirect("task/show/{$param}");
+    Model_Task::update_completion_date($id);
+    Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -142,10 +142,10 @@ class Controller_Task extends Controller
 
 
   // 削除
-  public function action_delete($param1, $param2)
+  public function action_delete($id, $user_id)
   {
-    Model_Task::delete($param1);
-    Response::redirect("/task/index_yet/{$param2}");
+    Model_Task::delete($id);
+    Response::redirect("/task/index_yet/{$user_id}");
   }
 
 }

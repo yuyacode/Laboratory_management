@@ -57,11 +57,11 @@ class Model_Task extends Model
 
 
   // 詳細
-  public static function select($param)
+  public static function select($id)
   {
     $result = DB::select('*')
     ->from('tasks')
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute()
     ->as_array();
     return $result;
@@ -84,50 +84,50 @@ class Model_Task extends Model
 
 
   // 編集 (title, content)
-  public static function update($param)
+  public static function update($id)
   {
     DB::update('tasks')
     ->set(array(
       'title' => Input::post('title'),
       'content' => Input::post('content'),
     ))
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }
 
 
   // 編集 (deadline)
-  public static function update_deadline($param)
+  public static function update_deadline($id)
   {
     DB::update('tasks')
     ->set(array(
       'deadline' => Input::post('deadline'),
     ))
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }
 
 
   // 編集 (completion_date)
-  public static function update_completion_date($param)
+  public static function update_completion_date($id)
   {
     DB::update('tasks')
     ->set(array(
       'completion_date' => Input::post('completion_date'),
     ))
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }
 
 
   // 削除
-  public static function delete($param)
+  public static function delete($id)
   {
     DB::delete('tasks')
-    ->where('id', '=', $param)
+    ->where('id', '=', $id)
     ->execute();
     return;
   }

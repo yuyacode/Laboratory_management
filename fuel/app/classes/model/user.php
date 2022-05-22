@@ -3,6 +3,18 @@
 class Model_User extends Model
 {
 
+  // ユーザー情報取得
+  public static function select($id)
+  {
+    $result = DB::select('*')
+    ->from('users')
+    ->where('id', '=', $id)
+    ->execute()
+    ->as_array();
+    return $result;
+  }
+
+
   // 新規登録
   public static function insert()
   {
@@ -30,8 +42,8 @@ class Model_User extends Model
   }
 
 
-  //
-  public static function select()
+  // ログイン
+  public static function login()
   {
     $username = Input::post('username');
     $password = Input::post('password');
@@ -46,19 +58,7 @@ class Model_User extends Model
   }
 
 
-  //
-  public static function select1($id)
-  {
-    $result = DB::select('*')
-    ->from('users')
-    ->where('id', '=', $id)
-    ->execute()
-    ->as_array();
-    return $result;
-  }
-
-
-  //
+  // 編集（ユーザー情報更新）
   public static function update($id)
   {
     DB::update('users')
