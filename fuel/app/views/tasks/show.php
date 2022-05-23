@@ -10,6 +10,7 @@ session_regenerate_id();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>laboratory management</title>
+  <?php echo Asset::css('style.css'); ?>
 </head>
 <body>
   <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
