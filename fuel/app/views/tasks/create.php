@@ -18,7 +18,7 @@ session_regenerate_id();
   <form action="/task/insert/<?php echo $_SESSION['id']; ?>" method="POST">
     <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
     <p>課題名</p>
-    <input type="text" name="title">
+    <input type="text" name="title" placeholder="50字以内">
     <p>課題内容</p>
     <textarea name="content"></textarea>
     <p>提出日</p>

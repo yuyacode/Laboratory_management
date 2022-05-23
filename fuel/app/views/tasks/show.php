@@ -22,20 +22,20 @@ session_regenerate_id();
     <?php else: ?>
       <p>未完了</p>
     <?php endif; ?>
-    <p><a href="/task/edit/<?php echo $task['id'] ?>">編集</a></p>
-    <p><a href="/task/delete/<?php echo $task['id'] ?>/<?php echo $_SESSION['id']; ?>">削除</a></p>
+    <p><a href="/task/edit/<?php echo $task['id']; ?>">編集</a></p>
+    <p><a href="/task/delete/<?php echo $task['id']; ?>/<?php echo $_SESSION['id']; ?>">削除</a></p>
     <p>作成日：<?php echo $task['created_at']; ?></p>
     <p>更新日：<?php echo $task['updated_at']; ?></p>
     <p><?php echo $task['content']; ?></p>
     <p>提出日：<?php echo $task['deadline']; ?></p>
-    <form action="/task/update_deadline/<?php echo $task['id'] ?>" method="POST">
+    <form action="/task/update_deadline/<?php echo $task['id']; ?>" method="POST">
       <input type="datetime-local" name="deadline">
       <p><input type="submit" value="提出日を変更する"></p>
     </form>
     <?php if (isset($task['completion_date'])) : ?>
       <p>完了日：<?php echo $task['completion_date']; ?></p>
     <?php else: ?>
-      <form action="/task/update_completion_date/<?php echo $task['id'] ?>" method="POST">
+      <form action="/task/update_completion_date/<?php echo $task['id']; ?>" method="POST">
         <input type="datetime-local" name="completion_date">
         <p><input type="submit" value="完了日を登録する"></p>
       </form>

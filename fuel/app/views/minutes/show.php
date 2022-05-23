@@ -16,8 +16,8 @@ session_regenerate_id();
   <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>議事録 詳細ページ</p>
   <?php foreach ($minutes_list as $minutes_item) : ?>
-    <p><a href="/minute/edit/<?php echo $minutes_item['id'] ?>">編集</a></p>
-    <p><a href="/minute/delete/<?php echo $minutes_item['id'] ?>/<?php echo $_SESSION['id']; ?>">削除</a></p>
+    <p><a href="/minute/edit/<?php echo $minutes_item['id']; ?>">編集</a></p>
+    <p><a href="/minute/delete/<?php echo $minutes_item['id']; ?>/<?php echo $_SESSION['id']; ?>">削除</a></p>
     <p><?php echo $minutes_item['title']; ?></p>
     <p><?php echo $minutes_item['summary']; ?></p>
     <p><?php echo $minutes_item['content']; ?></p>

@@ -16,16 +16,16 @@ session_regenerate_id();
   <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <p>議事録 編集ページ</p>
   <?php foreach ($minutes_list as $minutes_item) : ?>
-    <form action="/minute/update/<?php echo $minutes_item['id'] ?>" method="POST">
+    <form action="/minute/update/<?php echo $minutes_item['id']; ?>" method="POST">
       <p>タイトル</p>
-      <input type="text" name="title" value="<?php echo $minutes_item['title'] ?>">
+      <input type="text" name="title" value="<?php echo $minutes_item['title']; ?>">
       <p>概要</p>
-      <textarea name="summary"><?php echo $minutes_item['summary'] ?></textarea>
+      <textarea name="summary"><?php echo $minutes_item['summary']; ?></textarea>
       <p>内容</p>
-      <textarea name="content"><?php echo $minutes_item['content'] ?></textarea>
+      <textarea name="content"><?php echo $minutes_item['content']; ?></textarea>
       <p><input type="submit" value="保存"></p>
     </form>
-    <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>">キャンセル</a></p>
+    <p><a href="/minute/show/<?php echo $minutes_item['id']; ?>">キャンセル</a></p>
   <?php endforeach; ?>
 </body>
 </html>

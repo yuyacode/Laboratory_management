@@ -36,7 +36,7 @@ session_regenerate_id();
       <?php if ($status == '完了') : ?>
         <p>完了日：<?php echo $task['completion_date']; ?></p>
       <?php endif; ?>
-      <p><a href="/task/show/<?php echo $task['id'] ?>">詳細</a></p>
+      <p><a href="/task/show/<?php echo $task['id']; ?>">詳細</a></p>
     <?php endforeach; ?>
   <?php endif; ?>
 </body>

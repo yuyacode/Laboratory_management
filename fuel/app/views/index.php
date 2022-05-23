@@ -15,7 +15,7 @@ session_regenerate_id();
   <p>TOPページ</p>
   <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
   <?php foreach ($minutes_list as $minutes_item) : ?>
-    <p><a href="/minute/show/<?php echo $minutes_item['id'] ?>"><?php echo $minutes_item['title']; ?></a></p>
+    <p><a href="/minute/show/<?php echo $minutes_item['id']; ?>"><?php echo $minutes_item['title']; ?></a></p>
     <p><?php echo $minutes_item['summary']; ?></p>
     <p><?php echo $minutes_item['created_at']; ?></p>
     <p><?php echo $minutes_item['updated_at']; ?></p>
@@ -29,7 +29,7 @@ session_regenerate_id();
     <?php foreach ($tasks as $task) : ?>
       <p><?php echo $task['title']; ?></p>
       <p>提出期限：<?php echo $task['deadline']; ?></p>
-      <p><a href="/task/show/<?php echo $task['id'] ?>">詳細</a></p>
+      <p><a href="/task/show/<?php echo $task['id']; ?>">詳細</a></p>
     <?php endforeach; ?>
   <?php endif; ?>
 </body>
