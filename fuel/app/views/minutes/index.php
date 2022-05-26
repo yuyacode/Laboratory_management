@@ -11,18 +11,29 @@ session_regenerate_id();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>laboratory management</title>
   <?php echo Asset::css('style.css'); ?>
+  <?php echo Asset::css('main.css'); ?>
 </head>
 <body>
-  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
-  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
-  <p>議事録  一覧ページ</p>
-  <p><a href="/minute/create">新規作成</a></p>
-  <?php foreach ($minutes_list as $minutes_item) : ?>
-    <p><a href="/minute/show/<?php echo $minutes_item['id']; ?>"><?php echo $minutes_item['title']; ?></a></p>
-    <p><?php echo $minutes_item['summary']; ?></p>
-    <p><?php echo $minutes_item['created_at']; ?></p>
-    <p><?php echo $minutes_item['updated_at']; ?></p>
-    <br>
-  <?php endforeach; ?>
+  <main class="pt0 pb0">
+    <div class="flex justify-between flex-a-center h80 pr4vw pl4vw shadow-black">
+      <p class="fz20"><a href="/index/index/<?php echo $_SESSION['id']; ?>" class="navy-blue tdn">Laboratory management</a></p>
+      <p class="fz16"><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページ</a></p>
+    </div>
+    <div class="pt50 pb50 pr10vw pl10vw">
+      <div class="flex justify-between flex-a-center w80p mb30 mrauto mlauto">
+        <p class="fz20">議事録　一覧</p>
+        <p class="fz16"><a href="/minute/create">新規作成</a></p>
+      </div>
+      <?php foreach ($minutes_list as $minutes_item) : ?>
+        <div class="minutes w80p p20 mb40 mrauto mlauto border-black br5">
+          <p class="fz18 mb25"><?php echo $minutes_item['title']; ?></p>
+          <p class="tar">作成日：<?php echo $minutes_item['created_at']; ?></p>
+          <p class="mb25 tar">更新日：<?php echo $minutes_item['updated_at']; ?></p>
+          <p class="mb15"><?php echo $minutes_item['summary']; ?></p>
+          <p class="tar"><a href="/minute/show/<?php echo $minutes_item['id']; ?>">詳細</a></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </main>
 </body>
 </html>

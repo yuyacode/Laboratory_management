@@ -11,22 +11,35 @@ session_regenerate_id();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>laboratory management</title>
   <?php echo Asset::css('style.css'); ?>
+  <?php echo Asset::css('main.css'); ?>
 </head>
 <body>
-  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
-  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
-  <p>議事録 編集ページ</p>
-  <?php foreach ($minutes_list as $minutes_item) : ?>
-    <form action="/minute/update/<?php echo $minutes_item['id']; ?>" method="POST">
-      <p>タイトル</p>
-      <input type="text" name="title" value="<?php echo $minutes_item['title']; ?>">
-      <p>概要</p>
-      <textarea name="summary"><?php echo $minutes_item['summary']; ?></textarea>
-      <p>内容</p>
-      <textarea name="content"><?php echo $minutes_item['content']; ?></textarea>
-      <p><input type="submit" value="保存"></p>
-    </form>
-    <p><a href="/minute/show/<?php echo $minutes_item['id']; ?>">キャンセル</a></p>
-  <?php endforeach; ?>
+  <main class="pt0 pb0">
+    <div class="flex justify-between flex-a-center h80 pr4vw pl4vw shadow-black">
+      <p class="fz20"><a href="/index/index/<?php echo $_SESSION['id']; ?>" class="navy-blue tdn">Laboratory management</a></p>
+      <p class="fz16"><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページ</a></p>
+    </div>
+    <div class="pt50 pb50 pr10vw pl10vw">
+      <p class="fz20 mb30">編集</p>
+      <?php foreach ($minutes_list as $minutes_item) : ?>
+        <form action="/minute/update/<?php echo $minutes_item['id']; ?>" method="POST">
+          <div class="form-item mb30">
+            <p class="fz16 mb15">タイトル</p>
+            <input type="text" name="title" value="<?php echo $minutes_item['title']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">概要</p>
+            <textarea name="summary" class="h100 p10"><?php echo $minutes_item['summary']; ?></textarea>
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">内容</p>
+            <textarea name="content" class="h500 p10"><?php echo $minutes_item['content']; ?></textarea>
+          </div>
+          <p class="mb30 tar"><input type="submit" value="保存" class="light-blue bgc-white h30 w50 border-gray submit"></p>
+        </form>
+        <p class="tar"><a href="/minute/show/<?php echo $minutes_item['id']; ?>">キャンセル</a></p>
+      <?php endforeach; ?>
+    </div>
+  </main>
 </body>
 </html>
