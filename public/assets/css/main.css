@@ -82,12 +82,20 @@
   padding-top: 0;
 }
 
+.pt30 {
+  padding-top: 25px;
+}
+
 .pt50 {
   padding-top: 50px;
 }
 
 .pb0 {
   padding-bottom: 0;
+}
+
+.pb30 {
+  padding-bottom: 25px;
 }
 
 .pb50 {
@@ -156,6 +164,10 @@
 
 .border-gray {
   border: 1px solid #cdcdcd;
+}
+
+.bb-black {
+  border-bottom: 1px solid #404974;
 }
 
 
