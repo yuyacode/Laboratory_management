@@ -11,31 +11,55 @@ session_regenerate_id();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>laboratory management</title>
   <?php echo Asset::css('style.css'); ?>
+  <?php echo Asset::css('main.css'); ?>
 </head>
 <body>
-  <p><a href="/index/index/<?php echo $_SESSION['id']; ?>">TOPページへ</a></p>
-  <p><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページへ</a></p>
-  <p>ユーザー情報 編集ページ</p>
-  <?php foreach ($user_info_list as $user_info_item) : ?>
-    <form action="/user/edit/<?php echo $_SESSION['id']; ?>" method="POST">
-      <p>ユーザー名</p>
-      <input type="text" name="username" value="<?php echo $user_info_item['username']; ?>">
-      <p>パスワード</p>
-      <input type="text" name="password" value="<?php echo $user_info_item['password']; ?>">
-      <p>メールアドレス</p>
-      <input type="text" name="email" value="<?php echo $user_info_item['email']; ?>">
-      <p>大学</p>
-      <input type="text" name="university" value="<?php echo $user_info_item['university']; ?>">
-      <p>学部</p>
-      <input type="text" name="faculty" value="<?php echo $user_info_item['faculty']; ?>">
-      <p>学科</p>
-      <input type="text" name="department" value="<?php echo $user_info_item['department']; ?>">
-      <p>研究室</p>
-      <input type="text" name="laboratory" value="<?php echo $user_info_item['laboratory']; ?>">
-      <p>目標</p>
-      <textarea name="objective"><?php echo $user_info_item['objective']; ?></textarea>
-      <p><input type="submit" value="保存"></p>
-    </form>
-  <?php endforeach; ?>
+  <main class="pt0 pb0">
+    <div class="flex justify-between flex-a-center h80 pr4vw pl4vw shadow-black">
+      <p class="fz20"><a href="/index/index/<?php echo $_SESSION['id']; ?>" class="navy-blue tdn">Laboratory management</a></p>
+      <p class="fz16"><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページ</a></p>
+    </div>
+    <div class="pt50 pb50 pr10vw pl10vw">
+      <p class="fz20 mb30">編集</p>
+      <?php foreach ($user_info_list as $user_info_item) : ?>
+        <form action="/user/edit/<?php echo $_SESSION['id']; ?>" method="POST">
+          <div class="form-item mb30">
+            <p class="fz16 mb15">ユーザー名</p>
+            <input type="text" name="username" value="<?php echo $user_info_item['username']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">パスワード</p>
+            <input type="text" name="password" value="<?php echo $user_info_item['password']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">メールアドレス</p>
+            <input type="text" name="email" value="<?php echo $user_info_item['email']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">大学</p>
+            <input type="text" name="university" value="<?php echo $user_info_item['university']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">学部</p>
+            <input type="text" name="faculty" value="<?php echo $user_info_item['faculty']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">学科</p>
+            <input type="text" name="department" value="<?php echo $user_info_item['department']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">研究室</p>
+            <input type="text" name="laboratory" value="<?php echo $user_info_item['laboratory']; ?>">
+          </div>
+          <div class="form-item mb30">
+            <p class="fz16 mb15">目標</p>
+            <textarea name="objective" class="h120 p10"><?php echo $user_info_item['objective']; ?></textarea>
+          </div>
+          <p class="mb30 tar"><input type="submit" value="保存" class="light-blue bgc-white h30 w50 border-gray submit"></p>
+        </form>
+        <p class="tar"><a href="/user/index/<?php echo $_SESSION['id']; ?>">キャンセル</a></p>
+      <?php endforeach; ?>
+    </div>
+  </main>
 </body>
 </html>
