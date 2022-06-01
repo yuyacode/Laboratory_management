@@ -16,7 +16,7 @@ session_regenerate_id();
 <body>
   <main class="pt0 pb0">
     <div class="flex justify-between flex-a-center h80 pr4vw pl4vw shadow-black">
-      <p class="fz20"><a href="/index/index/<?php echo $_SESSION['id']; ?>" class="navy-blue tdn">Laboratory management</a></p>
+      <p class="fz20">Laboratory management</p>
       <p class="fz16">マイページ</p>
     </div>
     <div class="pt50 pb50 pr15vw pl15vw">
