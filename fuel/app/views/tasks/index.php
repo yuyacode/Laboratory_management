@@ -24,6 +24,7 @@ session_regenerate_id();
         <p class="fz20">課題　一覧</p>
         <p class="fz16"><a href="/task/create">新規作成</a></p>
       </div>
+      <button class="btn mb30 ml120" data-bind="click: tasksHandler">使い方</button>
       <div class="flex justify-between flex-a-center w80p mb30 mrauto mlauto">
         <?php if ($status == '完了') : ?>
           <p class="fz16">完了した課題</p>
@@ -55,5 +56,7 @@ session_regenerate_id();
       </div>
     </div>
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+  <?php echo Asset::js('view-model-tasks.js'); ?>
 </body>
 </html>

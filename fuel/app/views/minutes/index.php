@@ -24,6 +24,7 @@ session_regenerate_id();
         <p class="fz20">議事録　一覧</p>
         <p class="fz16"><a href="/minute/create">新規作成</a></p>
       </div>
+      <button class="btn mb30 ml120" data-bind="click: minutesHandler">使い方</button>
       <?php foreach ($minutes_list as $minutes_item) : ?>
         <div class="minutes w80p p20 mb40 mrauto mlauto border-black br5">
           <p class="fz18 mb25"><?php echo $minutes_item['title']; ?></p>
@@ -35,5 +36,7 @@ session_regenerate_id();
       <?php endforeach; ?>
     </div>
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+  <?php echo Asset::js('view-model-minutes.js'); ?>
 </body>
 </html>
