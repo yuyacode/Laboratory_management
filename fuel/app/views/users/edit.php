@@ -25,11 +25,11 @@ session_regenerate_id();
         <form action="/user/edit/<?php echo $_SESSION['id']; ?>" method="POST">
           <div class="form-item mb30">
             <p class="fz16 mb15">ユーザー名</p>
-            <input type="text" name="username" value="<?php echo $user_info_item['username']; ?>">
+            <input type="text" name="username" value="<?php echo $user_info_item['username']; ?>" placeholder="15字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">パスワード</p>
-            <input type="text" name="password" value="<?php echo $user_info_item['password']; ?>">
+            <input type="text" name="password" value="<?php echo $user_info_item['password']; ?>" placeholder="8～16字">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">メールアドレス</p>
@@ -37,19 +37,19 @@ session_regenerate_id();
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">大学</p>
-            <input type="text" name="university" value="<?php echo $user_info_item['university']; ?>">
+            <input type="text" name="university" value="<?php echo $user_info_item['university']; ?>" placeholder="20字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">学部</p>
-            <input type="text" name="faculty" value="<?php echo $user_info_item['faculty']; ?>">
+            <input type="text" name="faculty" value="<?php echo $user_info_item['faculty']; ?>" placeholder="20字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">学科</p>
-            <input type="text" name="department" value="<?php echo $user_info_item['department']; ?>">
+            <input type="text" name="department" value="<?php echo $user_info_item['department']; ?>" placeholder="20字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">研究室</p>
-            <input type="text" name="laboratory" value="<?php echo $user_info_item['laboratory']; ?>">
+            <input type="text" name="laboratory" value="<?php echo $user_info_item['laboratory']; ?>" placeholder="20字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">目標</p>

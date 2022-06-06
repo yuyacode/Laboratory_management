@@ -25,11 +25,11 @@ session_regenerate_id();
         <form action="/minute/update/<?php echo $minutes_item['id']; ?>" method="POST">
           <div class="form-item mb30">
             <p class="fz16 mb15">タイトル</p>
-            <input type="text" name="title" value="<?php echo $minutes_item['title']; ?>">
+            <input type="text" name="title" value="<?php echo $minutes_item['title']; ?>" placeholder="50字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">概要</p>
-            <textarea name="summary" class="h100 p10"><?php echo $minutes_item['summary']; ?></textarea>
+            <textarea name="summary" class="h100 p10" placeholder="255字以内"><?php echo $minutes_item['summary']; ?></textarea>
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">内容</p>

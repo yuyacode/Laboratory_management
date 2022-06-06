@@ -25,7 +25,7 @@ session_regenerate_id();
         <form action="/task/update/<?php echo $task['id']; ?>" method="POST">
           <div class="form-item mb30">
             <p class="fz16 mb15">課題名</p>
-            <input type="text" name="title" value="<?php echo $task['title']; ?>">
+            <input type="text" name="title" value="<?php echo $task['title']; ?>" placeholder="50字以内">
           </div>
           <div class="form-item mb30">
             <p class="fz16 mb15">課題内容</p>
