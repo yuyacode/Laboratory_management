@@ -6,20 +6,20 @@ class Controller_Task extends Controller
 {
 
   // 一覧ページ 表示（未完了）
-  public function action_index_yet($id)
+  public function action_index_yet($user_id)
   {
     $data = array();
-    $data['tasks'] = Model_Task::select_yet($id);
+    $data['tasks'] = Model_Task::select_yet($user_id);
     $data['status'] = '未完了';
     return View::forge('tasks/index', $data);
   }
 
 
   // 一覧ページ 表示（完了）
-  public function action_index_already($id)
+  public function action_index_already($user_id)
   {
     $data = array();
-    $data['tasks'] = Model_Task::select_already($id);
+    $data['tasks'] = Model_Task::select_already($user_id);
     $data['status'] = '完了';
     return View::forge('tasks/index', $data);
   }
@@ -42,7 +42,7 @@ class Controller_Task extends Controller
 
 
   // 作成
-  public function action_insert($id)
+  public function action_insert($user_id)
   {
     $val = Validation::forge();
 
@@ -58,7 +58,7 @@ class Controller_Task extends Controller
 
     if ($val->run()) {
       Model_Task::insert();
-      Response::redirect("task/index_yet/{$id}");
+      Response::redirect("task/index_yet/{$user_id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();

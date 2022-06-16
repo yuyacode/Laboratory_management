@@ -6,9 +6,9 @@ class Controller_User extends Controller
 {
 
   // マイページ 表示
-  public function action_index($id)
+  public function action_index($user_id)
   {
-    $data['user_info_list'] = Model_User::select($id);
+    $data['user_info_list'] = Model_User::select($user_id);
     return View::forge('users/index', $data);
   }
 
@@ -91,15 +91,15 @@ class Controller_User extends Controller
 
 
   // 編集ページ 表示
-  public function action_edit_page($id)
+  public function action_edit_page($user_id)
   {
-    $data['user_info_list'] = Model_User::select($id);
+    $data['user_info_list'] = Model_User::select($user_id);
     return View::forge('users/edit', $data);
   }
 
 
   // 編集
-  public function action_edit($id)
+  public function action_edit($user_id)
   {
     $val = Validation::forge();
 
@@ -132,8 +132,8 @@ class Controller_User extends Controller
     ->add_rule('max_length', 255);
 
     if ($val->run()) {
-      Model_User::update($id);
-      Response::redirect("/user/index/{$id}");
+      Model_User::update($user_id);
+      Response::redirect("/user/index/{$user_id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();
@@ -144,9 +144,9 @@ class Controller_User extends Controller
 
 
   // 削除（退会処理）
-  public function action_delete($id)
+  public function action_delete($user_id)
   {
-    Model_User::delete($id);
+    Model_User::delete($user_id);
     return View::forge('users/create');
   }
 

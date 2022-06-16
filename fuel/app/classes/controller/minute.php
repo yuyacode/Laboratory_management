@@ -31,7 +31,7 @@ class Controller_Minute extends Controller
 
 
   // 作成
-  public function action_insert($id)
+  public function action_insert($user_id)
   {
     $val = Validation::forge();
 
@@ -48,7 +48,7 @@ class Controller_Minute extends Controller
 
     if ($val->run()) {
       Model_Minute::insert();
-      Response::redirect("minute/index/{$id}");
+      Response::redirect("minute/index/{$user_id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();

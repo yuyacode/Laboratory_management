@@ -4,14 +4,14 @@ class Model_Task extends Model
 {
 
   // TOPページ
-  public static function select_top($id)
+  public static function select_top($user_id)
   {
     $now = date("Y-m-d H:i:s");
     $one_week_later = date('Y-m-d H:i:s', strtotime('1week'));
 
     $result = DB::select('*')
     ->from('tasks')
-    ->where('user_id', '=', $id)
+    ->where('user_id', '=', $user_id)
     ->where('completion_date', '=', null)
     ->where('deadline', '>=', $now)
     ->where('deadline', '<=', $one_week_later)
@@ -23,13 +23,13 @@ class Model_Task extends Model
 
 
   // 一覧（未完了）
-  public static function select_yet($id)
+  public static function select_yet($user_id)
   {
     $now = date("Y-m-d H:i:s");
 
     $result = DB::select('*')
     ->from('tasks')
-    ->where('user_id', '=', $id)
+    ->where('user_id', '=', $user_id)
     ->where('completion_date', '=', null)
     ->where('deadline', '>=', $now)
     ->order_by('deadline', 'asc')
@@ -40,13 +40,13 @@ class Model_Task extends Model
 
 
   // 一覧（完了）
-  public static function select_already($id)
+  public static function select_already($user_id)
   {
     $now = date("Y-m-d H:i:s");
 
     $result = DB::select('*')
     ->from('tasks')
-    ->where('user_id', '=', $id)
+    ->where('user_id', '=', $user_id)
     ->where('completion_date', '!=', null)
     ->where('deadline', '>=', $now)
     ->order_by('deadline', 'asc')

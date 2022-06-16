@@ -4,11 +4,11 @@ class Model_User extends Model
 {
 
   // ユーザー情報取得
-  public static function select($id)
+  public static function select($user_id)
   {
     $result = DB::select('*')
     ->from('users')
-    ->where('id', '=', $id)
+    ->where('id', '=', $user_id)
     ->execute()
     ->as_array();
     return $result;
@@ -59,7 +59,7 @@ class Model_User extends Model
 
 
   // 編集（ユーザー情報更新）
-  public static function update($id)
+  public static function update($user_id)
   {
     DB::update('users')
     ->set(array(
@@ -72,17 +72,17 @@ class Model_User extends Model
       'laboratory' => Input::post('laboratory'),
       'objective' => Input::post('objective'),
     ))
-    ->where('id', '=', $id)
+    ->where('id', '=', $user_id)
     ->execute();
     return;
   }
 
 
   // 削除（退会処理）
-  public static function delete($id)
+  public static function delete($user_id)
   {
     DB::delete('users')
-    ->where('id', '=', $id)
+    ->where('id', '=', $user_id)
     ->execute();
     return;
   }
