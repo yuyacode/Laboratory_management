@@ -94,6 +94,7 @@ class Controller_User extends Controller
   public function action_edit_page($user_id)
   {
     $data['user_info_list'] = Model_User::select($user_id);
+    $data['header'] = View::forge('header');
     return View::forge('users/edit', $data);
   }
 

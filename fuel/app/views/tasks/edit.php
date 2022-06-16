@@ -15,10 +15,7 @@ session_regenerate_id();
 </head>
 <body>
   <main class="pt0 pb0">
-    <div class="flex justify-between flex-a-center h80 pr4vw pl4vw shadow-black">
-      <p class="fz20"><a href="/index/index/<?php echo $_SESSION['id']; ?>" class="navy-blue tdn">Laboratory management</a></p>
-      <p class="fz16"><a href="/user/index/<?php echo $_SESSION['id']; ?>">マイページ</a></p>
-    </div>
+    <?php echo $header; ?>
     <div class="pt50 pb50 pr10vw pl10vw">
       <p class="fz20 mb30">編集</p>
       <?php foreach ($tasks as $task) : ?>

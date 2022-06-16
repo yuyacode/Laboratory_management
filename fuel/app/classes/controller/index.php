@@ -11,4 +11,5 @@ class Controller_Index extends Controller
     $data['tasks'] = Model_Task::select_top($user_id);
     return View::forge('index', $data);
   }
+
 }
