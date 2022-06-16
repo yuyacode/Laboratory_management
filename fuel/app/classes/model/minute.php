@@ -3,41 +3,41 @@
 class Model_Minute extends Model
 {
 
-  // TOPページ
-  public static function select_five($id)
+  // 議事録の取得（TOPページ、一覧、詳細）
+  public static function select($id = null, $user_id = null, $limit = null)
   {
-    $result = DB::select('*')
-    ->from('minutes')
-    ->where('user_id', '=', $id)
-    ->order_by('created_at', 'desc')
-    ->limit(5)
-    ->execute()
-    ->as_array();
-    return $result;
-  }
 
+    // TOPページ
+    if (isset($limit)) {
 
-  // 一覧
-  public static function select_all($id)
-  {
-    $result = DB::select('*')
-    ->from('minutes')
-    ->where('user_id', '=', $id)
-    ->order_by('created_at', 'desc')
-    ->execute()
-    ->as_array();
-    return $result;
-  }
+      $result = DB::select('*')
+      ->from('minutes')
+      ->where('user_id', '=', $user_id)
+      ->order_by('created_at', 'desc')
+      ->limit($limit)
+      ->execute()
+      ->as_array();
 
+      // 一覧
+    } elseif (isset($user_id) && empty($limit)) {
 
-  // 詳細
-  public static function select($id)
-  {
-    $result = DB::select('*')
-    ->from('minutes')
-    ->where('id', '=', $id)
-    ->execute()
-    ->as_array();
+      $result = DB::select('*')
+      ->from('minutes')
+      ->where('user_id', '=', $user_id)
+      ->order_by('created_at', 'desc')
+      ->execute()
+      ->as_array();
+
+      // 詳細
+    } elseif (isset($id)) {
+
+      $result = DB::select('*')
+      ->from('minutes')
+      ->where('id', '=', $id)
+      ->execute()
+      ->as_array();
+
+    }
     return $result;
   }
 

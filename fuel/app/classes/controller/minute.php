@@ -6,10 +6,10 @@ class Controller_Minute extends Controller
 {
 
   // 一覧ページ 表示
-  public function action_index($id)
+  public function action_index($user_id)
   {
     $data = array();
-    $data['minutes_list'] = Model_Minute::select_all($id);
+    $data['minutes_list'] = Model_Minute::select($id = null, $user_id, $limit = null);
     return View::forge('minutes/index', $data);
   }
 
@@ -18,7 +18,7 @@ class Controller_Minute extends Controller
   public function action_show($id)
   {
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($id);
+    $data['minutes_list'] = Model_Minute::select($id, $user_id = null, $limit = null);
     return View::forge('minutes/show', $data);
   }
 
