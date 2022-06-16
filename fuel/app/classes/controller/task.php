@@ -90,7 +90,8 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-      Model_Task::update($id);
+      $item = 'title,content';
+      Model_Task::update($id, $item);
       Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
@@ -110,7 +111,8 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-      Model_Task::update_deadline($id);
+      $item = 'deadline';
+      Model_Task::update($id, $item);
       Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
@@ -130,8 +132,9 @@ class Controller_Task extends Controller
     ->add_rule('required');
 
     if ($val->run()) {
-    Model_Task::update_completion_date($id);
-    Response::redirect("task/show/{$id}");
+      $item = 'completion_date';
+      Model_Task::update($id, $item);
+      Response::redirect("task/show/{$id}");
     } else {
       foreach ($val->error() as $value) {
         echo $value->get_message();

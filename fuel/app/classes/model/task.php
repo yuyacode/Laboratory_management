@@ -83,42 +83,32 @@ class Model_Task extends Model
   }
 
 
-  // 編集 (title, content)
-  public static function update($id)
+  // 編集
+  public static function update($id, $item)
   {
-    DB::update('tasks')
-    ->set(array(
-      'title' => Input::post('title'),
-      'content' => Input::post('content'),
-    ))
-    ->where('id', '=', $id)
-    ->execute();
-    return;
-  }
-
-
-  // 編集 (deadline)
-  public static function update_deadline($id)
-  {
-    DB::update('tasks')
-    ->set(array(
-      'deadline' => Input::post('deadline'),
-    ))
-    ->where('id', '=', $id)
-    ->execute();
-    return;
-  }
-
-
-  // 編集 (completion_date)
-  public static function update_completion_date($id)
-  {
-    DB::update('tasks')
-    ->set(array(
-      'completion_date' => Input::post('completion_date'),
-    ))
-    ->where('id', '=', $id)
-    ->execute();
+    if ($item == 'title,content') {
+      DB::update('tasks')
+      ->set(array(
+        'title' => Input::post('title'),
+        'content' => Input::post('content'),
+      ))
+      ->where('id', '=', $id)
+      ->execute();
+    } elseif ($item == 'deadline') {
+      DB::update('tasks')
+      ->set(array(
+        'deadline' => Input::post('deadline'),
+      ))
+      ->where('id', '=', $id)
+      ->execute();
+    } else {
+      DB::update('tasks')
+      ->set(array(
+        'completion_date' => Input::post('completion_date'),
+      ))
+      ->where('id', '=', $id)
+      ->execute();
+    }
     return;
   }
 
