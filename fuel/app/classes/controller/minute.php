@@ -10,6 +10,8 @@ class Controller_Minute extends Controller
   {
     $data = array();
     $data['minutes_list'] = Model_Minute::select($id = null, $user_id, $limit = null);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('minutes/index', $data);
   }
@@ -20,6 +22,8 @@ class Controller_Minute extends Controller
   {
     $data = array();
     $data['minutes_list'] = Model_Minute::select($id, $user_id = null, $limit = null);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('minutes/show', $data);
   }
@@ -28,6 +32,8 @@ class Controller_Minute extends Controller
   // 作成ページ 表示
   public function action_create()
   {
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('minutes/create', $data);
   }
@@ -66,6 +72,8 @@ class Controller_Minute extends Controller
   {
     $data = array();
     $data['minutes_list'] = Model_Minute::select($id);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('minutes/edit', $data);
   }

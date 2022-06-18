@@ -1,14 +1,5 @@
 <!-- 新規登録ページ -->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>laboratory management</title>
-  <?php echo Asset::css('style.css'); ?>
-  <?php echo Asset::css('main.css'); ?>
-</head>
+<?php echo $head; ?>
 <body>
   <main class="pt0 pb0">
     <p class="fz20 pt25 pb25 pr4vw pl4vw shadow-black">Laboratory management</p>

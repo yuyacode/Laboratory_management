@@ -9,6 +9,8 @@ class Controller_User extends Controller
   public function action_index($user_id)
   {
     $data['user_info_list'] = Model_User::select($user_id);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     return View::forge('users/index', $data);
   }
 
@@ -16,7 +18,8 @@ class Controller_User extends Controller
   // 新規登録ページ 表示
   public function action_create_page()
   {
-    return View::forge('users/create');
+    $data['head'] = View::forge('head');
+    return View::forge('users/create', $data);
   }
 
 
@@ -41,6 +44,8 @@ class Controller_User extends Controller
     if ($val->run()) {
       $data = array();
       $data['user_info_list'] = Model_User::insert();
+      $data['session'] = View::forge('session');
+      $data['head'] = View::forge('head');
       return View::forge('users/index', $data);
     } else {
       foreach ($val->error() as $value) {
@@ -54,7 +59,8 @@ class Controller_User extends Controller
   // ログインページ 表示
   public function action_login_page()
   {
-    return View::forge('users/login');
+    $data['head'] = View::forge('head');
+    return View::forge('users/login', $data);
   }
 
 
@@ -77,8 +83,11 @@ class Controller_User extends Controller
       $data['user_info_list'] = Model_User::login();
       if (empty($data['user_info_list'])) {
         $data['error'] = 'ログインに失敗しました。';
+        $data['head'] = View::forge('head');
         return View::forge('users/login', $data);
       } else {
+        $data['session'] = View::forge('session');
+        $data['head'] = View::forge('head');
         return View::forge('users/index', $data);
       }
     } else {
@@ -94,6 +103,8 @@ class Controller_User extends Controller
   public function action_edit_page($user_id)
   {
     $data['user_info_list'] = Model_User::select($user_id);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('users/edit', $data);
   }
@@ -148,7 +159,8 @@ class Controller_User extends Controller
   public function action_delete($user_id)
   {
     Model_User::delete($user_id);
-    return View::forge('users/create');
+    $data['head'] = View::forge('head');
+    return View::forge('users/create', $data);
   }
 
 }

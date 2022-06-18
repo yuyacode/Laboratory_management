@@ -11,6 +11,8 @@ class Controller_Task extends Controller
     $data = array();
     $data['tasks'] = Model_Task::select_yet($user_id);
     $data['status'] = '未完了';
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('tasks/index', $data);
   }
@@ -22,6 +24,8 @@ class Controller_Task extends Controller
     $data = array();
     $data['tasks'] = Model_Task::select_already($user_id);
     $data['status'] = '完了';
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('tasks/index', $data);
   }
@@ -32,6 +36,8 @@ class Controller_Task extends Controller
   {
     $data = array();
     $data['tasks'] = Model_Task::select($id);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('tasks/show', $data);
   }
@@ -40,6 +46,8 @@ class Controller_Task extends Controller
   // 作成ページ 表示
   public function action_create()
   {
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('tasks/create', $data);
   }
@@ -77,6 +85,8 @@ class Controller_Task extends Controller
   {
     $data = array();
     $data['tasks'] = Model_Task::select($id);
+    $data['session'] = View::forge('session');
+    $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
     return View::forge('tasks/edit', $data);
   }
