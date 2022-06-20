@@ -8,8 +8,12 @@ class Controller_Task extends Controller
   // 一覧ページ 表示（未完了）
   public function action_index_yet($user_id)
   {
+    $id = null;
+    $progress = 'incomplete';
+    $page = null;
+
     $data = array();
-    $data['tasks'] = Model_Task::select_yet($user_id);
+    $data['tasks'] = Model_Task::select($id, $user_id, $progress, $page);
     $data['status'] = '未完了';
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
@@ -21,8 +25,12 @@ class Controller_Task extends Controller
   // 一覧ページ 表示（完了）
   public function action_index_already($user_id)
   {
+    $id = null;
+    $progress = 'completion';
+    $page = null;
+
     $data = array();
-    $data['tasks'] = Model_Task::select_already($user_id);
+    $data['tasks'] = Model_Task::select($id, $user_id, $progress, $page);
     $data['status'] = '完了';
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
@@ -34,8 +42,12 @@ class Controller_Task extends Controller
   // 詳細ページ 表示
   public function action_show($id)
   {
+    $user_id = null;
+    $progress = null;
+    $page = null;
+
     $data = array();
-    $data['tasks'] = Model_Task::select($id);
+    $data['tasks'] = Model_Task::select($id, $user_id, $progress, $page);
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
@@ -83,8 +95,12 @@ class Controller_Task extends Controller
   // 編集ページ 表示 (title, content)
   public function action_edit($id)
   {
+    $user_id = null;
+    $progress = null;
+    $page = null;
+
     $data = array();
-    $data['tasks'] = Model_Task::select($id);
+    $data['tasks'] = Model_Task::select($id, $user_id, $progress, $page);
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');

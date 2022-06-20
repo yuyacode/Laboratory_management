@@ -7,37 +7,22 @@ class Model_Minute extends Model
   public static function select($id = null, $user_id = null, $limit = null)
   {
 
-    // TOPページ
-    if (isset($limit)) {
+    $query = DB::select('*')->from('minutes');
 
-      $result = DB::select('*')
-      ->from('minutes')
-      ->where('user_id', '=', $user_id)
-      ->order_by('created_at', 'desc')
-      ->limit($limit)
-      ->execute()
-      ->as_array();
+    if (!empty($id)) :
+      $query->where('id', '=', $id);
+    endif;
 
-      // 一覧
-    } elseif (isset($user_id) && empty($limit)) {
+    if (!empty($user_id)) :
+      $query->where('user_id', '=', $user_id)->order_by('created_at', 'desc');
+    endif;
 
-      $result = DB::select('*')
-      ->from('minutes')
-      ->where('user_id', '=', $user_id)
-      ->order_by('created_at', 'desc')
-      ->execute()
-      ->as_array();
+    if (!empty($limit)) :
+      $query->limit($limit);
+    endif;
 
-      // 詳細
-    } elseif (isset($id)) {
+    $result = $query->execute()->as_array();
 
-      $result = DB::select('*')
-      ->from('minutes')
-      ->where('id', '=', $id)
-      ->execute()
-      ->as_array();
-
-    }
     return $result;
   }
 

@@ -11,6 +11,7 @@ class Model_User extends Model
     ->where('id', '=', $user_id)
     ->execute()
     ->as_array();
+
     return $result;
   }
 
@@ -54,6 +55,7 @@ class Model_User extends Model
     ->where('password', '=', $password)
     ->execute()
     ->as_array();
+
     return $result;
   }
 
@@ -74,6 +76,7 @@ class Model_User extends Model
     ))
     ->where('id', '=', $user_id)
     ->execute();
+
     return;
   }
 
@@ -84,6 +87,7 @@ class Model_User extends Model
     DB::delete('users')
     ->where('id', '=', $user_id)
     ->execute();
+
     return;
   }
 

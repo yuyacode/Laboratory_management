@@ -3,67 +3,40 @@
 class Model_Task extends Model
 {
 
-  // TOPページ
-  public static function select_top($user_id)
+  // 課題の取得 (TOPページ, 一覧(未完了, 完了), 詳細)
+  public static function select($id = null, $user_id = null, $progress = null, $page = null)
   {
     $now = date("Y-m-d H:i:s");
     $one_week_later = date('Y-m-d H:i:s', strtotime('1week'));
 
-    $result = DB::select('*')
-    ->from('tasks')
-    ->where('user_id', '=', $user_id)
-    ->where('completion_date', '=', null)
-    ->where('deadline', '>=', $now)
-    ->where('deadline', '<=', $one_week_later)
-    ->order_by('deadline', 'asc')
-    ->execute()
-    ->as_array();
-    return $result;
-  }
+    $query = DB::select('*')->from('tasks');
 
+    if (!empty($id)) :
+      $query->where('id', '=', $id);
+    endif;
 
-  // 一覧（未完了）
-  public static function select_yet($user_id)
-  {
-    $now = date("Y-m-d H:i:s");
+    if (!empty($user_id)) :
+      $query->where('user_id', '=', $user_id)->where('deadline', '>=', $now);
 
-    $result = DB::select('*')
-    ->from('tasks')
-    ->where('user_id', '=', $user_id)
-    ->where('completion_date', '=', null)
-    ->where('deadline', '>=', $now)
-    ->order_by('deadline', 'asc')
-    ->execute()
-    ->as_array();
-    return $result;
-  }
+      if ($progress == 'incomplete') :
+        $query->where('completion_date', '=', null);
 
+        if ($page == 'top') :
+          $query->where('deadline', '<=', $one_week_later);
+        endif;
 
-  // 一覧（完了）
-  public static function select_already($user_id)
-  {
-    $now = date("Y-m-d H:i:s");
+      endif;
 
-    $result = DB::select('*')
-    ->from('tasks')
-    ->where('user_id', '=', $user_id)
-    ->where('completion_date', '!=', null)
-    ->where('deadline', '>=', $now)
-    ->order_by('deadline', 'asc')
-    ->execute()
-    ->as_array();
-    return $result;
-  }
+      if ($progress == 'completion') :
+        $query->where('completion_date', '!=', null);
+      endif;
 
+      $query->order_by('deadline', 'asc');
 
-  // 詳細
-  public static function select($id)
-  {
-    $result = DB::select('*')
-    ->from('tasks')
-    ->where('id', '=', $id)
-    ->execute()
-    ->as_array();
+    endif;
+
+    $result = $query->execute()->as_array();
+
     return $result;
   }
 
@@ -86,29 +59,30 @@ class Model_Task extends Model
   // 編集
   public static function update($id, $item)
   {
-    if ($item == 'title,content') {
-      DB::update('tasks')
-      ->set(array(
+    if ($item == 'title,content') :
+      $array = array(
         'title' => Input::post('title'),
         'content' => Input::post('content'),
-      ))
-      ->where('id', '=', $id)
-      ->execute();
-    } elseif ($item == 'deadline') {
-      DB::update('tasks')
-      ->set(array(
+      );
+    endif;
+
+    if ($item == 'deadline') :
+      $array = array(
         'deadline' => Input::post('deadline'),
-      ))
-      ->where('id', '=', $id)
-      ->execute();
-    } else {
-      DB::update('tasks')
-      ->set(array(
+      );
+    endif;
+
+    if ($item == 'completion_date') :
+      $array = array(
         'completion_date' => Input::post('completion_date'),
-      ))
+      );
+    endif;
+
+    DB::update('tasks')
+      ->set($array)
       ->where('id', '=', $id)
       ->execute();
-    }
+
     return;
   }
 

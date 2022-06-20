@@ -8,8 +8,11 @@ class Controller_Minute extends Controller
   // 一覧ページ 表示
   public function action_index($user_id)
   {
+    $id = null;
+    $limit = null;
+
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($id = null, $user_id, $limit = null);
+    $data['minutes_list'] = Model_Minute::select($id, $user_id, $limit);
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
@@ -20,8 +23,11 @@ class Controller_Minute extends Controller
   // 詳細ページ 表示
   public function action_show($id)
   {
+    $user_id = null;
+    $limit = null;
+
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($id, $user_id = null, $limit = null);
+    $data['minutes_list'] = Model_Minute::select($id, $user_id, $limit);
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
@@ -70,8 +76,11 @@ class Controller_Minute extends Controller
   // 編集ページ 表示
   public function action_edit($id)
   {
+    $user_id = null;
+    $limit = null;
+
     $data = array();
-    $data['minutes_list'] = Model_Minute::select($id);
+    $data['minutes_list'] = Model_Minute::select($id, $user_id, $limit);
     $data['session'] = View::forge('session');
     $data['head'] = View::forge('head');
     $data['header'] = View::forge('header');
